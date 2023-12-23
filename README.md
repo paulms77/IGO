@@ -1,1 +1,1 @@
-Project name: IGO
+IGO
