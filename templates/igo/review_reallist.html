@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+#notice{
+   border:0px solid #CCC;
+   padding:250px;
+   width:1870px;
+}
+#notice h3 {
+   margin:0 0 5px 0;
+   padding:0 0 0 540px;
+}
+#notice ul {
+   list-style: none;
+   margin:0;
+   padding:0;
+}
+#notice li {
+    background: url("static/category/notice_icon.gif") no-repeat right bottom;
+   padding-left: 540px;
+}
+
+.box {
+  background-color: #567895;
+}
+
+
+#notice li a {color:#876;text-decoration:none;}
+#notice li a:hover{text-decoration:underline;}
+</style>
+
+
+<img src="/static/category/메인사진4.png" alt="메인사진4" border="0" width="1800" height = "500">
+
+<br>
+<br>
+<br>
+<br>
+<h3><p style="color:#FF6600;">&nbsp;&nbsp; 오늘의 BEST 5</p></h3>
+
+<br>
+&nbsp;&nbsp;&nbsp;  <a href = "igo/family_list"><img src="/static/category/가족모임1.png" alt="가족모임 맛집 BEST TOP 5" border="0" width="420" height = "200"></a> &nbsp;&nbsp;&nbsp;
+<a href = "igo/friend_list"><img src="/static/category/친구끼리1.png" alt="친구끼리 갈만한 맛집 BEST TOP 5" border="0" width="420" height = "200"></a> &nbsp;&nbsp;&nbsp;
+<a href = "igo/cj_list"><img src="/static/category/청주맛집1.png" alt="충북 청주시 맛집 BEST TOP 5" border="0" width="420" height = "200"></a> &nbsp;&nbsp;&nbsp;
+<a href = "igo/famous_list"><img src="/static/category/유명인운영1.png" alt="충북 청주시 맛집 BEST TOP 5" border="0" width="420" height = "200"></a>
+
+
+<br>
+<br>
+<br>
+<hr color="gray" width=100% size="2">
+<br>
+
+<head>
+    <meta charset="UTF-8">
+    <h3><p style="color:#FF6600;">&nbsp;&nbsp; 맛집 카테고리</p></h3>
+</head>
+<body>
+    <Br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href = "igo/review_list"><img src="/static/category/패스트푸드.png" alt="치킨" border="0" width="230" height = "150"></a>
+    패스트푸드&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href = "igo/review_list_snack_bar"><img src="/static/category/분식1.png" alt="분식" border="0" width="230" height = "150"></a>
+    분식&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href = "igo/review_list_korea_food"><img src="/static/category/한식1.png" alt="한식" border="0" width="230" height = "150"></a>
+    한식<Br><Br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <a href = "igo/review_list_japan"><img src="/static/category/일식.png" alt="일식" border="0" width="230" height = "150"></a>
+    일식&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <a href = "igo/review_list_china"><img src="/static/category/중식.png" alt="중식" border="0" width="230" height = "150"></a>
+    중식&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <a href = "igo/review_list_cafe"><img src="/static/category/디졀트.png" alt="디졀트" border="0" width="230" height = "150"></a>
+    카페/디저트
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+    <div id="notice" class="box">
+        <ul>
+            <h3><a href = "igo/notion_list">IGO공지사항</a></h3>
+            <li><a href="#">[공지]. IGO 신규페이지 개설.</a></li>
+            <li><a href="#">[공지]. 디자이너 모집</a></li>
+            <li><a href="#">[공지]. IGO에 오신걸 환영합니다.</a></li>
+            <li><a href="#">[공지]. 공지사항 기능이 추가되었습니다.</a></li>
+            <li><a href="#">[공지]. 디자인 변경</a></li>
+            <li><a href="#">[공지]. IGO에 오신걸 환영합니다.</a></li>
+        </ul>
+    </div>
+
+</body>
+</html>
+
+
+{% endblock %}
+
+
+
+

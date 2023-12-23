@@ -1,0 +1,37 @@
+{% extends 'base7.html' %}
+{% block content %}
+
+<br>
+<div class="container">
+    <h5 class="my-3 border-bottom pb-2">리뷰쓰기</h5>
+   <form action="{% url 'igo:review_create7' %}" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        <!-- 오류표시 Start -->
+        {% if form.errors %}
+            <div class="alert alert-danger" role="alert">
+            {% for field in form %}
+                {% if field.errors %}
+                <strong>{{ field.label }}</strong>
+                {{ field.errors }}
+                {% endif %}
+            {% endfor %}
+            </div>
+        {% endif %}
+        <!-- 오류표시 End -->
+         <h4>제목: </h4>
+     <input type="text" name="subject">
+     <br>
+       <br>
+     <h4>이미지첨부: </h4>
+     <input type="file" name="image" accept="image/*">
+     <br>
+      <br>
+      <h4>내용: </h4>
+     <input type="text" name="contents">
+     <br>
+     <br>
+     <input class="btn btn-dark" type="submit" value="저장하기">
+    </form>
+</div>
+
+{% endblock %}

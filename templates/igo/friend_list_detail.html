@@ -1,0 +1,161 @@
+{% extends 'base6.html' %}
+{% block content %}
+
+{% load static %}
+
+&nbsp;&nbsp;&nbsp;<img src="/static/category/참1.png"  border="0" width="350" height = "280">
+<img src="/static/category/참2.png"  border="0" width="350" height = "280">
+<img src="/static/category/참3.png"  border="0" width="350" height = "280">
+<img src="/static/category/참4.png"  border="0" width="350" height = "280">
+<img src="/static/category/참5.png"  border="0" width="350" height = "280">
+
+
+  &nbsp;&nbsp;<br><div id="map" style="width:400px;height:350px; float:right;"></div>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey='key 위치'&libraries=services,clusterer,drawing"></script>
+    <script>
+        var container = document.getElementById('map');
+        var options = {
+            center: new kakao.maps.LatLng(37.56700, 127.02577),
+            lever: 4
+        };
+
+        var map = new kakao.maps.Map(container, options);
+        var markerPosition = new kakao.maps.LatLng(37.56700, 127.02577);
+        var marker = new kakao.maps.Marker({
+            position: markerPosition
+        });
+        marker.setMap(map);
+    </script>
+
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
+<div class="container my-3">
+<!-- ------------------------------- [edit] -------------------------------- -->
+    <!-- 사용자오류 표시 -->
+    {% if messages %}
+    <div class="alert alert-danger my-3" role="alert">
+    {% for message in messages %}
+        <strong>{{ message.tags }}</strong>
+        <ul><li>{{ message.message }}</li></ul>
+    {% endfor %}
+    </div>
+    {% endif %}
+<!-- ----------------------------------------------------------------------- -->
+    <h2>땅코참숯구이</h2>
+    <h2 class="border-bottom py-2">{{ review.subject }}</h2>
+<div class="card my-3">
+    <div class="card-body">
+        <!--
+        <div>
+            가게이름 : {{ review.shop_name }}<Br>
+            주소 : {{ review.address }}<Br>
+            {% if review.image %}
+                <img src="{{review.image.url}}" height="200" width="200"><Br>
+            {% endif %}
+            내용 : {{ review.contents }}<Br>
+            {% if review.modify_date %}
+            <div class="badge badge-light p-2 text-left mx-3">
+                <div class="mb-2">수정됨</div>
+                <div>{{ review.modify_date }}</div>
+            </div>
+            {% endif %}
+            <div class="badge badge-light p-2 text-left">
+                    <div class="mb-2">{{ review.author.username }}</div>
+                    <div>{{ review.create_date }}</div>
+            </div>
+        </div>
+        -->
+        가게이름 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;땅코참숯구이<br>
+        주소 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;서울특별시 성동구 행당동 298-53 <br>
+        음식종류 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;돼지고기 <br>
+        가격대 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16000 - 17000 원대 <br>
+        영업시간 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;오후 4:00~오전 12:00 <br>
+        연락처 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;02-2281-6908
+
+        {% if request.user == review.author %}
+        <div class="my-3">
+            <a href="{% url 'igo:review_modify' review.id %}"
+               class="btn btn-sm btn-outline-secondary">수정하기</a>
+            <a href="#" class="delete btn btn-sm btn-outline-secondary"
+               data-uri="{% url 'igo:review_delete' review.id  %}">삭제</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
+{% block script %}
+<script type='text/javascript'>
+$(document).ready(function(){
+    $(".delete").on('click', function() {
+        if(confirm("정말로 삭제하시겠습니까?")) {
+            location.href = $(this).data('uri');
+        }
+    });
+});
+</script>
+
+<a href="{% url 'igo:review_create_best' %}" class="btn btn-primary">리뷰쓰기</a>
+    <form action="" method="POST" enctype="multipart/form-data">
+        <center>
+        {% csrf_token %}
+
+        {% if review_list %}
+            <ul>
+            {% for review in review_list %}
+                <!-- <img src="/static/img/prdchicken.jpg"> -->
+                <a href="{% url 'igo:detail_best' review.id %}">{{ review.subject }}</a><br>
+                {% if review.image %}
+                <img src="{{ review.image.url }}" height="200" width="400"><br>
+                {% endif %}
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>리뷰가 없습니다.</p>
+        {% endif %}
+        </center>
+    </form>
+
+
+<!-- 페이징처리 시작 -->
+    <ul class="pagination justify-content-center">
+        <!-- 이전페이지 -->
+        {% if review_list.has_previous %}
+        <li class="page-item">
+             <a class="page-link" data-page="{{ review_list.previous_page_number }}" href="#">이전</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#"> << </a>
+        </li>
+        {% endif %}
+        <!-- 페이지리스트 -->
+        {% for page_number in review_list.paginator.page_range %}
+        {% if page_number >= review_list.number|add:-4 and page_number <= review_list.number|add:4 %}
+            {% if page_number == review_list.number %}
+            <li class="page-item active" aria-current="page">
+                 <a class="page-link" data-page="{{ page_number }}" href="#">{{ page_number }}</a>
+            </li>
+            {% else %}
+            <li class="page-item">
+                 <a class="page-link" data-page="{{ page_number }}" href="#">{{ page_number }}</a>
+            </li>
+            {% endif %}
+        {% endif %}
+        {% endfor %}
+        <!-- 다음페이지 -->
+        {% if review_list.has_next %}
+        <li class="page-item">
+             <a class="page-link" data-page="{{ review_list.next_page_number }}" href="#">다음</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#"> >> </a>
+        </li>
+        {% endif %}
+    </ul>
+    <!-- 페이징처리 끝 -->
+
+{% endblock %}
